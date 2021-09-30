@@ -1,0 +1,106 @@
+.meal {
+    /* display: flex; */
+    justify-content: space-between;
+    margin: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .meal h3 {
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .description {
+    font-style: italic;
+  }
+  
+  .price {
+    margin-top: 0.25rem;
+    font-weight: bold;
+    color: #0da8ef;
+    font-size: 1.25rem;
+  }
+
+  .card {
+    /* padding: 1rem; */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    background-color: white;
+  }
+  
+  .card h3 {
+    /* display: inline-block; */
+    margin-bottom: 0.2rem;
+    /* vertical-align: middle; */
+  }
+  
+  .description {
+    font-style: italic;
+    vertical-align: middle;
+    margin-bottom: 0.7rem;
+    color: rgb(100, 98, 98);
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #0da8ef;
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    /* object-fit: fill || contain || cover || none || scale-down; */
+  }
+  
+  .center {
+    /* line-height: 70px; */
+    border: 3px solid green;
+    text-align: center;
+  }
+  
+  .mright {
+    display: flex;
+    align-items: left;
+    text-align: left;
+    margin-left: 1.5rem;
+    margin-bottom: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  .actions button {
+    font: inherit;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #0da8ef;
+    border: 1px solid #58595a;
+    width: 2rem;
+    text-align: center;
+    border-radius: 6px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin: 0.25rem;
+  }
+  
+  .actions {
+    flex-direction: row;
+  }
+  
+  .bdr{
+    margin-top: 1rem;
+    border-bottom: 2px solid #0da8ef;
+  }
+  
+  .dfoot{
+    margin-top: 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  

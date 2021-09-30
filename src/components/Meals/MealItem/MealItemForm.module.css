@@ -1,0 +1,32 @@
+
+.form {
+    display: flex;
+    text-align: right;
+  }
+
+  .inp{
+    text-align: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+  }
+  
+  .form button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #383838;
+    border: 1px solid #686867;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .form button:hover,
+  .form button:active {
+    background-color: #0da8ef;
+    border-color: #686867;
+  }
