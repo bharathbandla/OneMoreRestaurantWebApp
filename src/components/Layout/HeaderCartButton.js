@@ -8,6 +8,7 @@ const HeaderCardButton = (props) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
 
   const cartCtx = useContext(CartContext);
+  
   // this will go to each item in the array and add the each item amount to curNum
   // initially curNum is 0
   const numberOfCartItems = cartCtx.items.reduce((curNum, item) => {

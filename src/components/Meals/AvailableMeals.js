@@ -1,6 +1,5 @@
 import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
-import CartContext from "../../store/cart-context";
 
 // import image
 import Samosa from "../../assets/samosa.jpg";
@@ -12,7 +11,6 @@ import Momo from "../../assets/Momo.jpg";
 import ChickenTikka from "../../assets/ChickenTikka.jpg";
 import PavBhaji from "../../assets/PavBhaji.jpg";
 import Rosogolla from "../../assets/Rosogolla.jpg";
-import { useContext } from "react";
 
 const DUMMY_MEALS = [
   {
@@ -81,19 +79,6 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
-  // gettin CartContext
-  const cartCtx = useContext(CartContext);
-
-  // add in cart item
-  const cartItemAddHandler = (item) => {
-    cartCtx.addItem({ ...item, quantity: 1 });
-  };
-
-  // remove cart item
-  const cartItemRemoveHandler = (id) => {
-    cartCtx.removeItem(id);
-  };
-
   // converting the meals array into jsx
   const mealsList = DUMMY_MEALS.map((meal) => (
     <MealItem

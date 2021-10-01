@@ -30,7 +30,10 @@ const cartReducer = (state, action) => {
         quantity: existingCartItem.quantity + action.item.quantity,
       };
 
+      // taking all previous items into array
       updatedItems = [...state.items];
+
+      // override that particular index with this new item
       updatedItems[existingCartItemIndex] = updatedItem;
     } else {
       // item was added first time
@@ -89,6 +92,7 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
+  // cartState has only two variables - items, totalAmount
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     defaultCartState
@@ -104,6 +108,7 @@ const CartProvider = (props) => {
   };
 
   // this is for intial value to the provider
+  // ony items and total items are from cartState
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
