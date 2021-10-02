@@ -3,6 +3,7 @@ import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
+import AboutCard from "./components/UI/AboutCard";
 
 function App() {
   // check whether cart is poped up or not
@@ -25,6 +26,7 @@ function App() {
       <main>
         <Meals />
       </main>
+      <AboutCard />
     </CartProvider>
   );
 }
