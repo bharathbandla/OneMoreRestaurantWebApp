@@ -9,8 +9,8 @@ return(<div>
         <div className={classes.info}>
             <h2>About</h2>
             <p>Bharath Bandla</p>
-            <a href="https://github.com/bharathbandla" target="_blank">Github</a> <br/>
-            <a href="https://www.linkedin.com/in/bharathbandla/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/bharathbandla" target="_blank" rel="noreferrer">Github</a> <br/>
+            <a href="https://www.linkedin.com/in/bharathbandla/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
     </div>
     );

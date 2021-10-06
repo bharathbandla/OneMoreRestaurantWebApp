@@ -1,86 +1,67 @@
 import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
-
-// import image
-import Samosa from "../../assets/samosa.jpg";
-import ChholeBhature from "../../assets/ChholeBhature.jpg";
-import BarbecueBurger from "../../assets/BarbecueBurger.jpg";
-import MasalaChai from "../../assets/MasalaChai.jpg";
-import Jalebi from "../../assets/Jalebi.jpg";
-import Momo from "../../assets/Momo.jpg";
-import ChickenTikka from "../../assets/ChickenTikka.jpg";
-import PavBhaji from "../../assets/PavBhaji.jpg";
-import Rosogolla from "../../assets/Rosogolla.jpg";
-
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Samosa",
-    description: "The king of all street foods in India ",
-    price: 3.99,
-    img: Samosa,
-  },
-  {
-    id: "m2",
-    name: "Chhole Bhature",
-    description: "A Indian specialty!",
-    price: 16.5,
-    img: ChholeBhature,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-    img: BarbecueBurger,
-  },
-  {
-    id: "m4",
-    name: "Masala Chai",
-    description: "Healthy...and enjoy...",
-    price: 7.99,
-    img: MasalaChai,
-  },
-  {
-    id: "m5",
-    name: "Jalebi",
-    description: "so delicious that one can easily imagine",
-    price: 12.99,
-    img: Jalebi,
-  },
-  {
-    id: "m6",
-    name: "Momo",
-    description: "little parcels of joy ",
-    price: 42.5,
-    img: Momo,
-  },
-  {
-    id: "m7",
-    name: "Chicken Tikka",
-    description: "reliable source of joy",
-    price: 112.99,
-    img: ChickenTikka,
-  },
-  {
-    id: "m8",
-    name: "Pav Bhaji",
-    description: "not one state, but all indias lover",
-    price: 26.99,
-    img: PavBhaji,
-  },
-  {
-    id: "m9",
-    name: "Rosogolla",
-    description: "Bengalis and rosogollas were synonymous.",
-    price: 15.99,
-    img: Rosogolla,
-  },
-];
+import { useEffect, useState } from "react";
 
 const AvailableMeals = () => {
+  // to save in state of meals we got from firebase
+  const [ourMeals, setOurMeals] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+  // for error handling
+  const [httpError, setHttpError] = useState();
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const myrespones = await fetch(
+        "https://onemorefoodweb-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      if (!myrespones.ok) {
+        // throw an error
+        throw new Error("Sorry ! Something went wrong ");
+      }
+      const responseData = await myrespones.json();
+
+      const loadedMeals = [];
+
+      for (const key in responseData) {
+        loadedMeals.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+          img: responseData[key].img,
+        });
+      }
+
+      setOurMeals(loadedMeals);
+      setIsLoading(false);
+    };
+
+    // run the function which is declared in above
+    fetchMeals().catch((error) => {
+      // catch any error occured in the ferchmeals function
+      // stop showing loading and show the error
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
+  }, []);
+
+  if (isLoading) {
+    return <section className={classes.MealsLoading}>Loading..</section>;
+  }
+
+  // check is there any error, if so then return this error
+  if (httpError) {
+    return (
+      <section className={classes.MealsError}>
+        <p>{httpError}</p>
+      </section>
+    );
+  }
+
   // converting the meals array into jsx
-  const mealsList = DUMMY_MEALS.map((meal) => (
+  const mealsList = ourMeals.map((meal) => (
     <MealItem
       id={meal.id}
       key={meal.id}
@@ -93,14 +74,7 @@ const AvailableMeals = () => {
 
   return (
     <section className={classes.meals}>
-      {/* <section> */}
-      {/* <Card> */}
-
-      {/* <ul>{mealsList}</ul> */}
-      {/* {mealsList} */}
-      {/* {mlist} */}
       <div className={classes["grid-container"]}>{mealsList}</div>
-      {/* </Card> */}
     </section>
   );
 };

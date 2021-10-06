@@ -7,11 +7,12 @@ const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onClose}/>;
 };
 
+
 const ModalOverlay = (props) => {
   // here the body of the cart will be there
   return (
     <div className={classes.modal}>
-      <div className={classes.context}>{props.children}</div>
+      <div className={classes.content}>{props.children}</div>
     </div>
   );
 };
